@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #f8f8ff;
+
+  --brand-primary: #0a0a1a;
+  --brand-accent: #0098f8;
+  --brand-accent-light: #00a8f8;
+  --brand-cyan: #00c8ff;
+  --brand-indigo: #0038b0;
+  --brand-violet: #6a3de8;
+  --brand-deep: #000828;
+  --brand-dark: #0a0a12;
+
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 20px;
+
+  --text-primary: #f8f8ff;
+  --text-secondary: rgba(248, 248, 255, 0.65);
+  --text-muted: rgba(248, 248, 255, 0.4);
+
+  --gradient-primary: linear-gradient(135deg, #0098f8, #0044ff, #6a3de8);
+  --gradient-accent: linear-gradient(135deg, #00a8f8, #0098f8, #6a3de8);
+  --gradient-cta: linear-gradient(135deg, #0098f8, #0070e0, #6a3de8);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(0, 152, 248, 0.15), transparent 70%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-indigo: var(--brand-indigo);
+  --color-brand-deep: var(--brand-deep);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@keyframes border-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, 'Geist', sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(0, 152, 248, 0.3);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
