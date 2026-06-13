@@ -2,14 +2,14 @@
 
 import { useState } from "react"
 import { Check, ArrowRight } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { FadeInSection } from "@/components/animations/FadeInSection"
 
 const PRICES: Record<string, { monthly: number; annual: number } | null> = {
-  Starter: { monthly: 99.9, annual: 74.9 },
-  Basic: { monthly: 199.9, annual: 149.9 },
-  Pro: { monthly: 349.9, annual: 262.9 },
-  Enterprise: null,
+  starter: { monthly: 99.9, annual: 74.9 },
+  basic: { monthly: 199.9, annual: 149.9 },
+  pro: { monthly: 349.9, annual: 262.9 },
+  enterprise: null,
 }
 
 const ALL_FEATURES: Record<string, string[]> = {
@@ -73,7 +73,7 @@ function fmtBR(v: number): string {
 }
 
 function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index: number }) {
-  const p = PRICES[plan.name]
+  const p = PRICES[plan.id]
   const features = ALL_FEATURES[plan.name]
   const annual = billing === "annual"
   const price = p ? (annual ? p.annual : p.monthly) : null
@@ -88,8 +88,8 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
         transition: { duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] },
       }}
       viewport={{ once: true }}
-      whileHover={{ y: -6, scale: plan.featured ? 1.03 : 1.02 }}
-      transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
+      whileHover={{ y: -6, scale: plan.featured ? 1.03 : 1.015 }}
+      transition={{ duration: 0.18, delay: 0, ease: "easeOut" }}
       className="relative rounded-2xl border flex flex-col backdrop-blur-xl h-full"
       style={{
         background: plan.featured
@@ -130,18 +130,29 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
           <p className="mt-1 text-xs text-white/40">{plan.users}</p>
         </div>
 
-        <div style={{ marginTop: "24px", marginBottom: "24px" }}>
+        <div style={{ marginTop: "20px", marginBottom: "20px" }}>
           {price !== null ? (
             <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-bold text-white">{priceLabel}</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={`${plan.id}-${billing}`}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="text-3xl font-bold text-white"
+                >
+                  R$ {fmtBR(price)}
+                </motion.span>
+              </AnimatePresence>
               <span className="text-sm text-white/50">/mês</span>
             </div>
           ) : (
             <span className="text-3xl font-bold text-white">Sob consulta</span>
           )}
           {price !== null && (
-            <p className="mt-0.5 text-xs text-white/40">
-              {annual ? "cobrado anualmente ∙ economiza 25%" : "cobrado mensalmente"}
+            <p className="mt-0.5 text-xs text-white/40 min-h-[1rem]">
+              {annual ? "por mês · cobrado anualmente" : "por mês"}
             </p>
           )}
         </div>
@@ -157,7 +168,7 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
           ))}
         </ul>
 
-        <div style={{ marginTop: "32px" }}>
+        <div style={{ marginTop: "auto", paddingTop: "24px" }}>
           <a
             href={plan.id === "enterprise" ? "#contato" : "#demo"}
             className={`w-full inline-flex items-center justify-center gap-2 text-sm font-medium rounded-xl px-6 py-3 transition-all duration-300 ${
@@ -176,10 +187,7 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
 }
 
 export function PlansSection() {
-  const [isAnnual, setIsAnnual] = useState(true)
-
-  const setMonthly = () => setIsAnnual(false)
-  const setAnnual = () => setIsAnnual(true)
+  const [billing, setBilling] = useState<"monthly" | "annual">("annual")
 
   return (
     <section id="planos" className="relative py-24 sm:py-32 overflow-hidden">
@@ -205,32 +213,30 @@ export function PlansSection() {
           >
             <button
               type="button"
-              onClick={setMonthly}
-              data-active={!isAnnual}
+              onClick={() => setBilling("monthly")}
               className="rounded-full text-sm font-medium cursor-pointer select-none transition-all duration-200"
               style={{
                 padding: "10px 24px",
-                background: !isAnnual ? "white" : "transparent",
-                color: !isAnnual ? "#0a0a0f" : "rgba(255,255,255,0.50)",
-                boxShadow: !isAnnual ? "0 2px 8px rgba(0,0,0,0.3)" : "none",
+                background: billing === "monthly" ? "white" : "transparent",
+                color: billing === "monthly" ? "#0a0a0f" : "rgba(255,255,255,0.50)",
+                boxShadow: billing === "monthly" ? "0 2px 8px rgba(0,0,0,0.3)" : "none",
               }}
             >
               Mensal
             </button>
             <button
               type="button"
-              onClick={setAnnual}
-              data-active={isAnnual}
+              onClick={() => setBilling("annual")}
               className="rounded-full text-sm font-medium cursor-pointer select-none transition-all duration-200 flex items-center gap-2"
               style={{
                 padding: "10px 24px",
-                background: isAnnual ? "white" : "transparent",
-                color: isAnnual ? "#0a0a0f" : "rgba(255,255,255,0.50)",
-                boxShadow: isAnnual ? "0 2px 8px rgba(0,0,0,0.3)" : "none",
+                background: billing === "annual" ? "white" : "transparent",
+                color: billing === "annual" ? "#0a0a0f" : "rgba(255,255,255,0.50)",
+                boxShadow: billing === "annual" ? "0 2px 8px rgba(0,0,0,0.3)" : "none",
               }}
             >
               Anual
-              {isAnnual && (
+              {billing === "annual" && (
                 <span
                   className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold"
                   style={{
@@ -248,7 +254,7 @@ export function PlansSection() {
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {PLANS.map((plan, i) => (
-            <Card key={plan.name} plan={plan} billing={isAnnual ? "annual" : "monthly"} index={i} />
+            <Card key={plan.name} plan={plan} billing={billing} index={i} />
           ))}
         </div>
       </div>

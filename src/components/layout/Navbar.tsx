@@ -86,12 +86,12 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="#contato"
-            className="text-sm text-white/60 transition-colors hover:text-white/90"
+          <span
+            className="text-sm text-white/30 select-none"
+            style={{ opacity: 0.5, cursor: "not-allowed" }}
           >
-            Entrar
-          </a>
+            Em breve
+          </span>
           <a
             href="#demo"
             className="inline-flex items-center justify-center gap-2 text-sm font-medium rounded-xl px-4 py-2 bg-gradient-to-r from-[#0098f8] via-[#0070e0] to-[#6a3de8] text-white shadow-lg shadow-[#0098f8]/20 hover:shadow-[0_0_40px_rgba(0,152,248,0.3)] transition-all duration-300"
@@ -150,13 +150,12 @@ export function Navbar() {
                   Solicitar Demo
                   <ArrowRight className="h-4 w-4" />
                 </a>
-                <a
-                  href="#contato"
-                  onClick={() => setMenuOpen(false)}
-                  className="text-center text-sm text-white/50 py-3 hover:text-white transition-colors"
+                <span
+                  className="text-center text-sm text-white/30 py-3 select-none"
+                  style={{ opacity: 0.5, cursor: "not-allowed" }}
                 >
-                  Entrar
-                </a>
+                  Em breve
+                </span>
               </div>
             </motion.div>
           </>

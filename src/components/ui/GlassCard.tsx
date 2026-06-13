@@ -16,8 +16,8 @@ const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
     return (
       <motion.div
         ref={ref}
-        whileHover={hover ? { y: -8, scale: 1.02 } : undefined}
-        transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
+        whileHover={hover ? { y: -6, scale: 1.015 } : undefined}
+        transition={{ duration: 0.18, delay: 0, ease: "easeOut" }}
         className={cn(
           "relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-6",
           "transition-all duration-200",

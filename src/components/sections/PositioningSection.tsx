@@ -47,7 +47,7 @@ export function PositioningSection() {
           {/* Visual side */}
           <FadeInSection direction="right" className="flex justify-center">
             <div className="relative">
-              <AnatomicHeart size="xl" withGlow withParticles />
+              <AnatomicHeart size="2xl" withGlow withParticles heartbeat />
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,152,248,0.1)_0%,_transparent_60%)]" />
             </div>
           </FadeInSection>

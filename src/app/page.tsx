@@ -6,6 +6,7 @@ import { PlansSection } from "@/components/sections/PlansSection"
 import { AdditionalUsersSection } from "@/components/sections/AdditionalUsersSection"
 import { ConsultingSection } from "@/components/sections/ConsultingSection"
 import { AudienceSection } from "@/components/sections/AudienceSection"
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { FinalCTASection } from "@/components/sections/FinalCTASection"
 import { FloatingActions } from "@/components/ui/FloatingActions"
@@ -21,6 +22,7 @@ export default function Home() {
       <AdditionalUsersSection />
       <ConsultingSection />
       <AudienceSection />
+      <TestimonialsSection />
       <FAQSection />
       <FinalCTASection />
       <FloatingActions />

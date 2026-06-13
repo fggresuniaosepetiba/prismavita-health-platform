@@ -120,15 +120,35 @@ export function HeroSection() {
         </motion.div>
 
         {/* Social proof */}
-        <motion.div variants={item} className="mt-12 flex flex-col items-center gap-3">
-          <div className="flex items-center gap-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        <motion.div variants={item} className="mt-12 flex items-center justify-center gap-4 sm:gap-6">
+          <div className="flex items-center">
+            {["CA", "MF", "RS", "JP", "LB"].map((initials, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center rounded-full border-2 border-[#0a0a0f] text-[11px] font-medium text-white"
+                style={{
+                  width: 32,
+                  height: 32,
+                  background: "rgba(0,152,248,0.2)",
+                  marginLeft: i > 0 ? -10 : 0,
+                  zIndex: 5 - i,
+                }}
+              >
+                {initials}
+              </div>
             ))}
           </div>
-          <p className="text-sm text-white/40">
-            Confiado por clínicas em todo o Brasil
-          </p>
+          <div className="text-left">
+            <div className="text-sm font-semibold text-white">+200 clínicas</div>
+            <div className="text-xs text-white/55">confiam no PrismaVita</div>
+          </div>
+          <div className="h-8 w-px bg-white/[0.12]" />
+          <div className="flex items-center gap-1">
+            {[...Array(5)].map((_, i) => (
+              <span key={i} className="text-sm" style={{ color: "#FCD34D" }}>★</span>
+            ))}
+            <span className="ml-1 text-sm font-semibold text-white">4.9</span>
+          </div>
         </motion.div>
 
         {/* Scroll indicator */}
