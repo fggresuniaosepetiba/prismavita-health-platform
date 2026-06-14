@@ -89,13 +89,13 @@ export function Footer() {
             © {new Date().getFullYear()} PrismaVita. Todos os direitos reservados.
           </p>
           <div className="flex gap-6 text-sm text-white/40">
-            <a href="/termos" className="hover:text-white/60 transition-colors">
+            <a href="/termos" className="relative text-sm text-white/60 transition-colors hover:text-white/90 after:absolute after:bottom-[-2px] after:left-1/2 after:h-[2px] after:w-0 after:bg-[#0098f8] after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 inline-flex items-center gap-1 group">
               Termos
             </a>
-            <a href="/privacidade" className="hover:text-white/60 transition-colors">
+            <a href="/privacidade" className="relative text-sm text-white/60 transition-colors hover:text-white/90 after:absolute after:bottom-[-2px] after:left-1/2 after:h-[2px] after:w-0 after:bg-[#0098f8] after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 inline-flex items-center gap-1 group">
               Privacidade
             </a>
-            <a href="/lgpd" className="hover:text-white/60 transition-colors">
+            <a href="/lgpd" className="relative text-sm text-white/60 transition-colors hover:text-white/90 after:absolute after:bottom-[-2px] after:left-1/2 after:h-[2px] after:w-0 after:bg-[#0098f8] after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 inline-flex items-center gap-1 group">
               LGPD
             </a>
           </div>
