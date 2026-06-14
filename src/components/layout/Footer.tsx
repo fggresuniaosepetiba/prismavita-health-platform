@@ -71,7 +71,7 @@ export function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-white/50 hover:text-white transition-colors inline-flex items-center gap-1 group"
+                      className="relative text-sm text-white/60 transition-colors hover:text-white/90 after:absolute after:bottom-[-2px] after:left-1/2 after:h-[2px] after:w-0 after:bg-[#0098f8] after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 inline-flex items-center gap-1 group"
                     >
                       {link.label}
                       <ArrowUpRight className="h-3 w-3 opacity-0 -translate-y-1 group-hover:opacity-60 group-hover:translate-y-0 transition-all" />
