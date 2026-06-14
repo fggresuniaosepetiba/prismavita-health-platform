@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { FadeInSection } from "@/components/animations/FadeInSection"
 
 const PRICES: Record<string, { monthly: number; annual: number } | null> = {
-  starter: { monthly: 99.9, annual: 74.9 },
-  basic: { monthly: 199.9, annual: 149.9 },
-  pro: { monthly: 349.9, annual: 262.9 },
+  starter: { monthly: 99.9, annual: 75 },
+  basic: { monthly: 199.9, annual: 150 },
+  pro: { monthly: 349.9, annual: 265 },
   enterprise: null,
 }
 
@@ -191,7 +191,7 @@ export function PlansSection() {
 
   return (
     <section id="planos" className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(0,152,248,0.03)_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(0,152,248,0.03)_0%,_transparent_60%)] pointer-events-none -z-10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInSection>
@@ -236,7 +236,6 @@ export function PlansSection() {
               }}
             >
               Anual
-              {billing === "annual" && (
                 <span
                   className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold"
                   style={{
@@ -247,7 +246,6 @@ export function PlansSection() {
                 >
                   -25%
                 </span>
-              )}
             </button>
           </div>
         </div>
