@@ -114,7 +114,7 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
       {plan.badge && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
           <motion.span
-            className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#0098f8] to-[#6a3de8] px-3 py-1 text-xs font-semibold text-white shadow-lg"
+            className="inline-flex items-center gap-1 rounded-full bg-linear-to-r from-[#0098f8] to-[#6a3de8] px-3 py-1 text-xs font-semibold text-white shadow-lg"
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -123,7 +123,7 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
         </div>
       )}
 
-      <div className="p-8 flex flex-col flex-1 relative z-[1]" style={{ paddingTop: plan.badge ? "40px" : "32px" }}>
+      <div className="p-8 flex flex-col flex-1 relative z-1" style={{ paddingTop: plan.badge ? "40px" : "32px" }}>
         <div>
           <h3 className="text-xl font-bold text-white">{plan.name}</h3>
           <p className="mt-1 text-sm text-white/50">{plan.desc}</p>
@@ -151,13 +151,13 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
             <span className="text-3xl font-bold text-white">Sob consulta</span>
           )}
           {price !== null && (
-            <p className="mt-0.5 text-xs text-white/40 min-h-[1rem]">
+            <p className="mt-0.5 text-xs text-white/40 min-h-4">
               {annual ? "por mês · cobrado anualmente" : "por mês"}
             </p>
           )}
         </div>
 
-        <hr className="border-white/[0.08]" style={{ margin: "0 0 24px 0" }} />
+        <hr className="border-white/8" style={{ margin: "0 0 24px 0" }} />
 
         <ul className="flex-1 flex flex-col gap-3">
           {features.map((f) => (
@@ -173,7 +173,7 @@ function Card({ plan, billing, index }: { plan: PlanInfo; billing: string; index
             href={plan.id === "enterprise" ? "#contato" : "#demo"}
             className={`w-full inline-flex items-center justify-center gap-2 text-sm font-medium rounded-xl px-6 py-3 transition-all duration-300 ${
               plan.ctaPrimary
-                ? "bg-gradient-to-r from-[#0098f8] via-[#0070e0] to-[#6a3de8] text-white shadow-lg shadow-[#0098f8]/20 hover:shadow-[0_0_40px_rgba(0,152,248,0.3)]"
+                ? "bg-linear-to-r from-[#0098f8] via-[#0070e0] to-[#6a3de8] text-white shadow-lg shadow-[#0098f8]/20 hover:shadow-[0_0_40px_rgba(0,152,248,0.3)]"
                 : "border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/20"
             }`}
           >
@@ -191,7 +191,7 @@ export function PlansSection() {
 
   return (
     <section id="planos" className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(0,152,248,0.03)_0%,_transparent_60%)] pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,152,248,0.03)_0%,transparent_60%)] pointer-events-none -z-10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeInSection>
