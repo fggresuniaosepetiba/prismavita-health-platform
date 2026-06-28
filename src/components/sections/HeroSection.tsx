@@ -23,19 +23,19 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0f] pt-24">
       {/* Background layer */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,152,248,0.08)_0%,_transparent_70%)] z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,152,248,0.08)_0%,transparent_70%)] z-0" />
 
       {/* World Map */}
-      <div className="absolute inset-0 z-[1] pointer-events-none">
+      <div className="absolute inset-0 z-1 pointer-events-none">
         <WorldMap />
       </div>
 
       {/* Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[3]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-3">
         {Array.from({ length: 40 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-[2px] h-[2px] rounded-full bg-[#0098f8]/30"
+            className="absolute w-0.5 h-0.5 rounded-full bg-[#0098f8]/30"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -63,7 +63,7 @@ export function HeroSection() {
       >
         {/* Badge */}
         <motion.div variants={item} className="mb-6 flex justify-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/3 px-4 py-2 backdrop-blur-md">
             <Sparkles className="h-4 w-4 text-[#0098f8]" />
             <span className="text-xs font-medium text-white/70 tracking-wide uppercase">
               Smart Clinic & EHR Platform
@@ -83,7 +83,7 @@ export function HeroSection() {
         >
           <span className="text-white">Menos burocracia.</span>
           <br />
-          <span className="bg-gradient-to-r from-[#0098f8] via-[#00a8f8] to-[#6a3de8] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-[#0098f8] via-[#00a8f8] to-[#6a3de8] bg-clip-text text-transparent">
             Mais atendimento.
           </span>
         </motion.h1>
@@ -105,7 +105,7 @@ export function HeroSection() {
         >
           <a
             href="#demo"
-            className="inline-flex items-center justify-center gap-2 text-base font-medium rounded-xl px-8 py-4 bg-gradient-to-r from-[#0098f8] via-[#0070e0] to-[#6a3de8] text-white shadow-lg shadow-[#0098f8]/20 hover:shadow-[0_0_40px_rgba(0,152,248,0.3)] transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 text-base font-medium rounded-xl px-8 py-4 bg-linear-to-r from-[#0098f8] via-[#0070e0] to-[#6a3de8] text-white shadow-lg shadow-[#0098f8]/20 hover:shadow-[0_0_40px_rgba(0,152,248,0.3)] transition-all duration-300"
           >
             Solicitar Demonstração
             <ArrowRight className="h-5 w-5" />
@@ -142,7 +142,7 @@ export function HeroSection() {
             <div className="text-sm font-semibold text-white">+200 clínicas</div>
             <div className="text-xs text-white/55">confiam no PrismaVita</div>
           </div>
-          <div className="h-8 w-px bg-white/[0.12]" />
+          <div className="h-8 w-px bg-white/12" />
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <span key={i} className="text-sm" style={{ color: "#FCD34D" }}>★</span>
